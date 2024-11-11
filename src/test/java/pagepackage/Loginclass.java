@@ -11,7 +11,7 @@ WebDriver driver;
 WebElement username;
 @FindBy(id="upass")
 WebElement password;
-@FindBy(xpath="/html/body/div[3]/div/div/div/form/input[2]")
+@FindBy(xpath="/html/body/div[3]/div/div/div/form/input[@id='sub_logbtn']")
 WebElement loginbutton;
 
 public Loginclass(WebDriver driver)
@@ -27,5 +27,9 @@ public void setvalueslogin(String user,String pass)
 public void loginbuttonclick()
 {
 	loginbutton.click();
+}
+public void close()
+{
+	driver.close();
 }
 }

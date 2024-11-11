@@ -1,8 +1,13 @@
 package pagepackage;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -47,6 +52,27 @@ public void setvlues(String name,String email,String pswd, String cpswd,String p
 public void click()
 {
 	createaccclick.click();
+	
 }
+public void screenshot() throws IOException
+{
+	WebElement ele=driver.findElement(By.xpath("//img[@alt='Kerala Property']"));
+	File src=ele.getScreenshotAs(OutputType.FILE);
+	FileHandler.copy(src, new File("./Screenshot/home.png"));
+}
+public void Titleverification()
+{
+	String actualtitle=driver.getTitle();
+	String exptitle="keralaproperty";
+	if(actualtitle.equals(exptitle))
+	{
+		System.out.println("pass");
+	}
+	else
+	{
+		System.out.println("fail");
+	}
+}
+
 }
 
